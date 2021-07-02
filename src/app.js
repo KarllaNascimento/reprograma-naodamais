@@ -1,4 +1,4 @@
-// const empresas = require("./routes/empresas.routes")
+const doctorRouter = require("./routes/doctor.routes")
 const authRouter = require("./routes/auth.routes.js");
 const userRouter = require("./routes/user.routes")
 const express = require("express");
@@ -14,5 +14,6 @@ app.use(express.json());
 
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
+app.use("/api/doctor", doctorRouter);
 
 module.exports = app;
