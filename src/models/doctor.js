@@ -9,17 +9,12 @@ const DoctorSchema = new mongoose.Schema({
       type: String,
       required: true
    },
-   active: {
+   state: {
       type: String,
       required: true
    },
    description: {
-      type: String,
-      required: true
-   },
-   state: {
-      type: String,
-      required: true
+      type: String
    },
    price: {
       type: Number,
@@ -33,7 +28,9 @@ const DoctorSchema = new mongoose.Schema({
       type: mongoose.ObjectId
    },
    date: {
-      type: Date
+      type: Date,
+      require: true,
+      default: new Date
    }
 });
 

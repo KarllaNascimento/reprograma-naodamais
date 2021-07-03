@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const verifyToken = require("../helpers/check-token");
 const getUserByToken = require("../helpers/get-user-by-token");
+
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 
@@ -47,7 +48,7 @@ router.put("/", verifyToken, async (req,res)=>{
    if(password != confirmPassword){
       res.status(401).json({ error: "As senhas não conferem!"});
 //change password
-   } else if (password == confirmPassword && password !=null) {
+   } else if (password == confirmPassword && password != null) {
 
 //creating password
    const salt = await bcrypt.genSalt(12);
