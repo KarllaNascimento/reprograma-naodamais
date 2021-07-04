@@ -47,4 +47,12 @@ router.post("/", verifyToken, async (req, res) =>{
    
 });
 
+//get all doctors 
+
+//get a doctor by id
+
+//update the information
+
+//delete doctor
+
 module.exports = router;
