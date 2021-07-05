@@ -1,4 +1,4 @@
-const doctorRouter = require("./routes/doctor.routes")
+const doctorRouter = require("./routes/doctorUser.routes")
 const authRouter = require("./routes/auth.routes.js");
 const userRouter = require("./routes/user.routes")
 const express = require("express");

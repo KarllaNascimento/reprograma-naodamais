@@ -1,4 +1,4 @@
-const Doctor = require("../models/doctor");
+const Doctor = require("../models/doctorUser");
 const User = require("../models/user");
 const verifyToken = require("../helpers/check-token");
 const getUserByToken = require("../helpers/get-user-by-token");
@@ -19,7 +19,7 @@ router.post("/", verifyToken, async (req, res) =>{
    // const 
 
 //validations
-   if(name == null || adress == null || state == null || price == null || healthPlan == null){
+   if(name == null || adress == null || state == null || price == null || healthPlan == null || description){
       return res.status(400).json({ error: "Preencha todos os campos obrigatórios!"})
    }
 

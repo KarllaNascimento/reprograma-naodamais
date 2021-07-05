@@ -25,7 +25,7 @@ const DoctorSchema = new mongoose.Schema({
       required: true
    },
    userId: {
-      type: mongoose.ObjectId
+      type: mongoose.ObjectId  //preciso mesmo do id?
    },
    date: {
       type: Date,
