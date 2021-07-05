@@ -9,15 +9,16 @@ const DoctorSchema = new mongoose.Schema({
       type: String,
       required: true
    },
-   state: {
+   description: {
       type: String,
       required: true
    },
-   description: {
-      type: String
+   feminineGender: {
+      type: Boolean,
+      required: true
    },
-   price: {
-      type: Number,
+   socialPrice: {
+      type: Boolean,
       required: true
    },
    healthPlan: {
@@ -25,7 +26,7 @@ const DoctorSchema = new mongoose.Schema({
       required: true
    },
    userId: {
-      type: mongoose.ObjectId  //preciso mesmo do id?
+      type: mongoose.ObjectId  
    },
    date: {
       type: Date,
