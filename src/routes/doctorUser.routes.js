@@ -17,10 +17,25 @@ router.post("/", verifyToken, async (req, res) =>{
    const socialPrice = req.body.socialPrice;
    const healthPlan = req.body.healthPlan;
 
+//verify user
+const token = req.header("auth-token");
+const userByToken = await getUserByToken(token);
+const userId = userByToken._id.toString();
+const user = User.findOne({ _id: userId});
+
+try {
+   const user = await user.findOne({ _id: userId});
+} catch (error) {
+   return res.status(400).json({ error: "É preciso realizar o login para cadastrar novas informações."});
+}
+
 //validations
    if(name == null || adress == null || socialPrice == null || healthPlan == null || description == null || feminineGender == null){
       return res.status(400).json({ error: "Preencha todos os campos obrigatórios!"});
    };
+
+
+
 
 //check if there is a doctor
    const nameExists = await Doctor.findOne({ name : name});
@@ -109,6 +124,25 @@ router.put("/update", verifyToken, async (req,res)=>{
 })
 
 //delete a doctor
+router.delete("/:id", verifyToken, async (req,res)=>{
 
+   const token = req.header("auth-token");
+   const user = await getUserByToken(token);
+   const doctorId = req.body.id;
+   const userId = user._id.toString();
+
+   try {
+
+      await Doctor.deleteOne({ _id: doctorId, userId: userId});
+      res.json({ error: null, msg: "Médico/a deletado com sucesso!"});
+      
+   } catch (error) {
+      
+      res.status(400).json({error: "Você não tem permissão para realizar essa ação."})
+
+   }
+
+
+})
 
 module.exports = router;
