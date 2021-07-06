@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const SpecialistSchema = new mongoose.Schema({
+const GuideSchema = new mongoose.Schema({
    articles: {
       type: String,
       required: true
@@ -23,6 +23,6 @@ const SpecialistSchema = new mongoose.Schema({
    }
 });
 
-const Specialist = mongoose.model("Company", SpecialistSchema);
+const Guide = mongoose.model("Guide", GuideSchema);
 
-module.exports = Specialist;
+module.exports = Guide;
