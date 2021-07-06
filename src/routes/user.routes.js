@@ -5,22 +5,35 @@ const getUserByToken = require("../helpers/get-user-by-token");
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 
-// get an user
-router.get("/:id", verifyToken, async (req, res) => {
+// // get an user
+// router.get("/:id", verifyToken, async (req, res) => {
 
-   const id = req.params.id;
+//    const id = req.params.id;
 
-//verify user
+// //verify user
+//    try {
+//       const user = await User.findOne({ _id: id }, { password: 0 });
+
+//       res.json({error: null, user});
+
+//    } catch (error){
+//       return res.status(400).json({error: "O usuário não existe!"});
+//    };
+// });
+
+//get user all user specialist
+router.get("/specialist", verifyToken, async (req, res) =>{
+
    try {
-      const user = await User.findOne({ _id: id }, { password: 0 });
-
-      res.json({error: null, user});
-
-   } catch (error){
-      return res.status(400).json({error: "O usuário não existe!"});
+      
+      const allspecialist = await User.find({ doctor: true }, { password: 0 });
+      res.json({error: null, allspecialist: allspecialist});
+   } catch (error) {
+      
+      return res.status(400).json({error});
    };
-});
 
+});
 
 //update an user
 router.put("/", verifyToken, async (req,res)=>{
@@ -67,10 +80,10 @@ try {
    res.json({ error: null, msg: "Usuário atualizado com sucesso!", data: updateUser});
 
 } catch (error) {
-;
+
    res.status(400).json({ error })
    
-}
+};
 
 
 });

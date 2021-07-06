@@ -12,16 +12,16 @@ router.post("/", verifyToken, async (req, res) =>{
 
    const name = req.body.name;
    const adress = req.body.adress;
-   const feminineGender = req.body.feminineGender;
-   const description = req.body.description;
    const socialPrice = req.body.socialPrice;
    const healthPlan = req.body.healthPlan;
+   const description = req.body.description;
+   const feminineGender = req.body.feminineGender;
 
 //verify user
 const token = req.header("auth-token");
 const userByToken = await getUserByToken(token);
 const userId = userByToken._id.toString();
-const user = User.findOne({ _id: userId});
+const user = user.findOne({ _id: userId}); //verificar se é user ou User
 
 try {
    const user = await user.findOne({ _id: userId});
@@ -33,8 +33,6 @@ try {
    if(name == null || adress == null || socialPrice == null || healthPlan == null || description == null || feminineGender == null){
       return res.status(400).json({ error: "Preencha todos os campos obrigatórios!"});
    };
-
-
 
 
 //check if there is a doctor
@@ -118,8 +116,52 @@ router.get("/gender", async (req, res) =>{
 
 });
 
-//update the information
+//update a doctor
 router.put("/update", verifyToken, async (req,res)=>{
+
+//req body
+const name = req.body.name;
+const adress = req.body.adress;
+const socialPrice = req.body.socialPrice;
+const healthPlan = req.body.healthPlan;
+const description = req.body.description;
+const feminineGender = req.body.feminineGender;
+
+
+//validatiosn
+if(name == "null" || adress == null || socialPrice == null || healthPlan == null || description == null || feminineGender == null){
+   return res.status(400).json({ error: "Preencha todos os campos obrigatórios!"});
+};
+
+// verify user
+const token = req.header("auth-token");
+const userByToken = await getUserByToken(token);
+const userId = userByToken._id.toString();
+const user = user.findOne({ _id: userId}); //verificar se é user ou User
+
+try {
+   const user = await user.findOne({ _id: userId});
+} catch (error) {
+   return res.status(400).json({ error: "É preciso realizar o login para cadastrar novas informações."});
+}
+
+//build doctor object
+const updateDoctor = new Doctor({
+   name: name,
+   adress: adress,
+   feminineGender: feminineGender,
+   description: description,
+   socialPrice: socialPrice,
+   healthPlan: healthPlan
+});
+
+
+try {
+   const newDoctor = await updateDoctor.save();
+   return res.status(201).json(newDoctor);
+} catch (err) {
+   return res.status(400).json({message: err.message});
+};
 
 })
 
@@ -138,11 +180,11 @@ router.delete("/:id", verifyToken, async (req,res)=>{
       
    } catch (error) {
       
-      res.status(400).json({error: "Você não tem permissão para realizar essa ação."})
+      res.status(400).json({error: "Você não tem permissão para realizar essa ação."});
 
-   }
+   };
 
 
-})
+});
 
 module.exports = router;
