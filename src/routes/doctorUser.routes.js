@@ -4,7 +4,6 @@ const verifyToken = require("../helpers/check-token");
 const getUserByToken = require("../helpers/get-user-by-token");
 
 const router = require("express").Router();
-const jwt = require("jsonwebtoken");
 
 //create new doctor
 
@@ -126,10 +125,11 @@ const socialPrice = req.body.socialPrice;
 const healthPlan = req.body.healthPlan;
 const description = req.body.description;
 const feminineGender = req.body.feminineGender;
-
+const doctorId = req.body.id;
+const doctorUserId =  req.body.user_id;
 
 //validatiosn
-if(name == "null" || adress == null || socialPrice == null || healthPlan == null || description == null || feminineGender == null){
+if(name == "null" || adress == null || socialPrice == null || healthPlan == null || description == null || feminineGender == null || doctorId == null){
    return res.status(400).json({ error: "Preencha todos os campos obrigatórios!"});
 };
 
@@ -137,30 +137,33 @@ if(name == "null" || adress == null || socialPrice == null || healthPlan == null
 const token = req.header("auth-token");
 const userByToken = await getUserByToken(token);
 const userId = userByToken._id.toString();
-const user = user.findOne({ _id: userId}); //verificar se é user ou User
+const user = await User.findOne({ _id: userId });
 
-try {
-   const user = await user.findOne({ _id: userId});
-} catch (error) {
-   return res.status(400).json({ error: "É preciso realizar o login para cadastrar novas informações."});
+if (!user) {
+   return res.status(400).json({ error: "O usuário não existe!" });
 }
 
 //build doctor object
-const updateDoctor = new Doctor({
+const doctor = ({
+   id: doctorId,
    name: name,
    adress: adress,
    feminineGender: feminineGender,
    description: description,
    socialPrice: socialPrice,
-   healthPlan: healthPlan
+   healthPlan: healthPlan,
+   userId: doctorUserId
 });
 
 
 try {
-   const newDoctor = await updateDoctor.save();
-   return res.status(201).json(newDoctor);
+
+//returns update data
+   const updateDoctor = await Doctor.findOneAndUpdate({ _id: doctorId, userId: userId }, { $set: doctor }, {new: true})
+   res.json({error: null, msg: "Doutor/a atualizado com sucsso!", data: updateDoctor})
+
 } catch (err) {
-   return res.status(400).json({message: err.message});
+   res.status(400).json({error: "Atualização não realizada"});
 };
 
 })
