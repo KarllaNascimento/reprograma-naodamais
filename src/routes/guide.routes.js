@@ -1,4 +1,4 @@
-const Specialist = require("../models/guide");
+const Guide = require("../models/guide");
 const User = require("../models/user");
 const verifyToken = require("../helpers/check-token");
 const getUserByToken = require("../helpers/get-user-by-token");
@@ -11,17 +11,17 @@ router.post("/", verifyToken, async (req, res) =>{
    const guidance = req.body.guidance;
    const approach = req.body.approach;
 
-//verify user
-const token = req.header("auth-token");
-const userByToken = await getUserByToken(token);
-const userId = userByToken._id.toString();
-const user = user.findOne({ _id: userId}); //verificar se é user ou User
+// //verify user
+// const token = req.header("auth-token");
+// const userByToken = await getUserByToken(token);
+// const userId = userByToken._id.toString();
+// const user = User.findOne({ _id: userId}); //verificar se é user ou User
 
-try {
-   const user = await user.findOne({ _id: userId});
-} catch (error) {
-   return res.status(400).json({ error: "É preciso realizar o login para cadastrar novas informações."});
-}
+// try {
+//    const user = await user.findOne({ _id: userId});
+// } catch (error) {
+//    return res.status(400).json({ error: "É preciso realizar o login para cadastrar novas informações."});
+// }
 
 //validations
    if(articles == null || guidance == null || approach == null){
@@ -43,5 +43,48 @@ try {
    
 });
 
+//all guides
+router.get("/all", async (req, res) =>{
+
+   try {
+      
+      const guides = await Guide.find()
+      res.json({error: null, guides: guides});
+   } catch (error) {
+      
+      return res.status(400).json({error});
+   };
+
+});
+
+//guide by id 
+router.get("/:id", async (req, res) =>{
+
+   try {
+      
+      const allArticles = await Guide.findById(req.params.id);
+      res.json({error: null, allArticles: allArticles});
+   } catch (error) {
+      
+      return res.status(400).json({error});
+   };
+
+});
+
+
+router.patch("/:id", async (req, res) =>{
+   const findGuide = await Guide.findById(req.params.id)
+   if(findGuide == null) {
+      return res.status(404).json({msg: "Guia não encontrado!"})
+   } 
+   if(req.body.articles != null){
+      findGuide.articles = req.body.articles
+      findGuide.guidance = req.body.guidance
+      findGuide.approach = req.body.approach
+   }
+
+   const updateGuide = await findGuide.save()
+   res.json({error: null, updateGuide})
+})
 
 module.exports = router;
