@@ -11,17 +11,17 @@ router.post("/", verifyToken, async (req, res) =>{
    const guidance = req.body.guidance;
    const approach = req.body.approach;
 
-// //verify user
-// const token = req.header("auth-token");
-// const userByToken = await getUserByToken(token);
-// const userId = userByToken._id.toString();
-// const user = User.findOne({ _id: userId}); //verificar se é user ou User
+//verify user
+const token = req.header("auth-token");
+const userByToken = await getUserByToken(token);
+const userId = userByToken._id.toString();
+const user = User.findOne({ _id: userId}); //verificar se é user ou User
 
-// try {
-//    const user = await user.findOne({ _id: userId});
-// } catch (error) {
-//    return res.status(400).json({ error: "É preciso realizar o login para cadastrar novas informações."});
-// }
+try {
+   const user = await user.findOne({ _id: userId});
+} catch (error) {
+   return res.status(400).json({ error: "É preciso realizar o login para cadastrar novas informações."});
+}
 
 //validations
    if(articles == null || guidance == null || approach == null){
@@ -71,12 +71,23 @@ router.get("/:id", async (req, res) =>{
 
 });
 
-
-router.patch("/:id", async (req, res) =>{
+//update guide
+router.patch("/:id", verifyToken, async (req, res) =>{
    const findGuide = await Guide.findById(req.params.id)
    if(findGuide == null) {
       return res.status(404).json({msg: "Guia não encontrado!"})
    } 
+
+// verify user
+const token = req.header("auth-token");
+const userByToken = await getUserByToken(token);
+const userId = userByToken._id.toString();
+const user = await User.findOne({ _id: userId });
+
+if (!user) {
+   return res.status(400).json({ error: "O usuário não existe!" });
+}
+
    if(req.body.articles != null){
       findGuide.articles = req.body.articles
       findGuide.guidance = req.body.guidance
@@ -85,6 +96,21 @@ router.patch("/:id", async (req, res) =>{
 
    const updateGuide = await findGuide.save()
    res.json({error: null, updateGuide})
+})
+
+//delete guide
+router.delete("/:id", async (req,res)=>{
+   const findGuide = await Guide.findById(req.params.id)
+   if(findGuide == null) {
+      return res.status(404).json({msg: "Guia não encontrado!"})
+   } 
+   
+   try {
+      await findGuide.remove()
+      res.json({error: null, msg: "Guia deletado!"})
+   } catch (error) {
+      res.status(500).json({message: err.message})
+   }
 })
 
 module.exports = router;
