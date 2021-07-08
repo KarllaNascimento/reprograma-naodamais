@@ -6,7 +6,7 @@ const router = require("express").Router();
 router.post("/create", verifyToken, controller.createGuide);
 
 //all guides
-router.get("/all", controller.allGuides);
+router.get("/allGuide", controller.allGuides);
 
 //guide by id 
 router.get("/:id", controller.guideById);

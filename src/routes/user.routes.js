@@ -23,7 +23,7 @@ const router = require("express").Router();
 router.get("/specialist", controller.allSpecilist);
 
 //update an user
-router.put("/", verifyToken, controller.createUser);
+router.put("/user", verifyToken, controller.createUser);
 
 
 

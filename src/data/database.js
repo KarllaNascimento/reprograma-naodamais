@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const connect = () =>{mongoose.connect(`mongodb://localhost:27017/tecuida`, {
+const connect = () =>{mongoose.connect(process.env.DATABASE_URI, {
    useNewUrlParser: true,
    useFindAndModify: false,
    useUnifiedTopology: true,
