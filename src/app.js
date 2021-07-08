@@ -2,7 +2,7 @@ const authRouter = require("./routes/auth.routes.js");
 const userRouter = require("./routes/user.routes");
 const doctorRouter = require("./routes/doctorUser.routes");
 const guideRouter = require("./routes/guide.routes");
-const db = require("../src/data/database");
+const db = require("./data/dbConfig");
 const index = require("./routes/index");
 
 const express = require("express");
