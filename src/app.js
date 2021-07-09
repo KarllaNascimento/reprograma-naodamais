@@ -8,9 +8,9 @@ const index = require("./routes/index");
 const express = require("express");
 const cors = require("cors");
 
-
-db.connect();
 const app = express();
+db.connect();
+
 
 
 app.use(cors());
