@@ -4,10 +4,10 @@ const UserSchema = new mongoose.Schema({
    name: {
       type: String
    },
-   email : {
-      type : String,
+   email: {
+      type: String,
       required: true,
-      match : /.+\@.+\..+/,
+      match: /.+\@.+\..+/,
       unique: true
    },
    password: {

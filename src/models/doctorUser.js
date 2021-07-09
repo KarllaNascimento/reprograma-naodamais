@@ -26,7 +26,7 @@ const DoctorSchema = new mongoose.Schema({
       required: true
    },
    userId: {
-      type: mongoose.ObjectId  
+      type: mongoose.ObjectId
    },
    date: {
       type: Date,
@@ -38,12 +38,3 @@ const DoctorSchema = new mongoose.Schema({
 const Doctor = mongoose.model("Doctor", DoctorSchema);
 
 module.exports = Doctor;
-
-
-// colocar um booleano para deixar aparecendo ou privado
-// contar a problemática e solução
-
-// quero aparexcer
-// naõ quero aparexcerum if
-// criar uma ropta dizendo que quer aparexcer
-// caso não
