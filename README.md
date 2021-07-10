@@ -16,16 +16,22 @@
 <p align="justify"> Como resultado a esses dois problemas existe uma verdadeira fuga desse grupo das consultas ginecológicas. De acordo com a Febrasgo (Federação Brasileira das Associações de Ginecologia e Obstetrícia) 76% das mulheres (independentemente de sua sexualidade) realizam consultas ginecológicas anualmente. Mas quando falamos das mulheres que fazem sexo com mulheres o índice cai para 47%. Uma situação extremamente preocupante porque a prevenção é o melhor caminho para evitar problemas e ter uma boa saúde. 
   
 <p align="justify"> Atualmente o processo de encontrar uma boa ginecologista se dá por meio do boca a boca ou através de indicação em grupos nas redes sociais. Fora o difícil acesso para encontrar médicas/os especialistas para tratar sobre o assunto. Essas dificuldades tornam um processo que deveria ser natural em algo trabalhoso e cansativo.
+<br>
+<br>    
     
 ## 2. O que propõe o projeto <strong>teCuida</strong>?     
     
 <p align="justify"> Partindo do princípio que estamos no século XXI e que tamanho retrocesso é inaceitável, como forma de mitigar esse problema, a <strong>teCuida</strong> busca criar um ambiente de referência capaz de criar uma base de médicos e médicas que realizam esse atendimento humanizado, assim como uma base para que médicos possam ter acesso a guias com instruções sobre como proceder corretamente em consultas e exames realizados em mulheres lésbicas, bissexuais e pessoas não binárias.
+<br>
+<br>
   
  ## 3. Como vai funcionar? :hammer_and_wrench:
   
 <strong>teCuida</strong> é uma API RESTfull feita com a tecnologia Javascript no Node.js e integrada ao MongoDB que atende três clientes: usuáries, pessoas da medicina que buscam informação sobre o tema e especialistas atuantes na área desejam contribuir com seus conhecimentos. Sendo assim, será possível realizar ações como o cadastro, atualização e visualização de médicos que já fazem esse atendimento especializado, considerando informações como preço social, plano de saúde, descrição e gênero. Assim como também será possível, por parte dos médicos atuantes, o cadastro e atualização de guias para realização de um atendimento não violento. 
 
 Por se tratar de um tema que requer cautela e abordagem segura, ações como cadastro, atualização e deleção de informações só podem ser realizadas por usuários já cadastrados no sistema.
+<br>
+<br>
 
 
 ## 4. Tecnologias utilizadas para a construção da API:
@@ -138,24 +144,126 @@ Endpoint: {{URL}}api/doctor
     
  Rota | Método | O que faz |
 | --- | --- | --- |
-| `/doctor` | POST | Cadastro de médicas/os |
+| `/create` | POST | Cadastro de médicas/os |
+| `/all` | GET | Retorna médicas/os que aceitam plano de saúde |    
 | `/healthPlan` | GET | Retorna médicas/os que aceitam plano de saúde |
 | `/socialPrice` | GET | Retorna médicas/os que aceitam preço social |
 | `/femaleGender` | GET | Retorna apenas médicas do gênero feminino |
 | `/maleGender` | GET | Retorna apenas médicos do gênero masculino |
 | `/update` | PUT | Atualiza cadastro de médicas/os através do id |
-| `/:id` | PUT | Deleta médicas/os cadastrados através do id |   
+| `/:id` | DELETE | Deleta médicas/os cadastrados através do id |   
     
+ ### 6.5 Rota CRUD para guia de orientações feitas por médicas/os especialistas
     
+Endpoint: {{URL}}api/guide    
     
+ Rota | Método | O que faz |
+| --- | --- | --- |
+| `/create` | POST | Cadastro de guia com orientações |
+| `/allGuide` | GET | Retorna todas os guias de orientação |
+| `/:id` | GET | Retorna guia de um/a médico/a específico pelo seu id |
+| `/:id` | PATCH | Atualiza informações de um guia através do id |
+| `/:id` | DELETE | Deleta um guia através do id | 
     
+<br>
+<br>
     
+### 6.6 Schemas   
     
+#### 6.6.1 Usuárias  
     
+ ```jsx
+[
+name: {
+      type: String
+   },
+   email: {
+      type: String,
+      required: true,
+      match: /.+\@.+\..+/,
+      unique: true
+   },
+   password: {
+      type: String,
+      required: true
+   },
+   doctor: {
+      type: Boolean
+   },
+   crm: {
+      type: Number
+   }
+]
+```
+#### 6.6.1 Médicas/os cadastrados pelas usuárias
     
+ ```jsx
+[
+   name: {
+      type: String,
+      required: true
+   },
+   adress: {
+      type: String,
+      required: true
+   },
+   description: {
+      type: String,
+      required: true
+   },
+   feminineGender: {
+      type: Boolean,
+      required: true
+   },
+   socialPrice: {
+      type: Boolean,
+      required: true
+   },
+   healthPlan: {
+      type: Boolean,
+      required: true
+   },
+   userId: {
+      type: mongoose.ObjectId
+   },
+   date: {
+      type: Date,
+      require: true,
+      default: new Date
+   }
+]
+```   
     
+#### 6.6.1 Guias cadastrados pelas/os médicas/os
     
-## Regras de negócio :handshake:
+```jsx
+[
+   articles: {
+      type: String,
+      required: true
+   },
+   guidance: {
+      type: String,
+      required: true
+   },
+   approach: {
+      type: String,
+      required: true
+   },
+   userId: {
+      type: mongoose.ObjectId
+   },
+   date: {
+      type: Date,
+      require: true,
+      default: new Date
+   }
+]    
+``` 
+<br>
+<br>
+    
+## 7. Regras de negócio :handshake:
 
 #### Rota de registro:
     
@@ -216,8 +324,35 @@ Endpoint: {{URL}}api/doctor
     
 <br>
 <br>
-     
-## Implementações Futuras
+    
+## 8. Implementações Futuras
 
+*  Desenvolvimento de uma interface gráfica;
+*  Validação do CRM cadastrado pelos médicos especialistas;
+*  Possibilidade de interação entre usuárias e médicos/as;
+*  Criação de cadastro apenas com apresentação do CPF como forma de garantir a autenticidade da ausuária;
+*  Possibilidade de usuárias contestarem informações cadastradas pelas/os médicas/os no guia. 
+    
+<br>
+<br>
+    
+## 9. Deseja contribuir?
+    
+1. Faça o download ou clone este repositório;
+2. Abra seu Terminal/Prompt e navegue até o diretório reprograma-tecuida;
+3. Rode: **$ npm install**;
+1. Para subir o servidor é só rodar **$ npm run start**.
+ 
+<br>
+<br>
+      
+    
+## 10. Autora :woman_technologist:     
      
-## Autora woman_technologist
+  ### Karlla Nascimento
+- [instagram](https://www.instagram.com/karllanascimento/)
+- [linkedin](https://www.linkedin.com/in/karlla-nascimento/)
+- [github](https://github.com/KarllaNascimento)
+    
+    
+    
