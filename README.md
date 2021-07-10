@@ -7,7 +7,7 @@
   <img width="470" src="src/assets/teCuida.gif">
 </p>
 
-## Conheça o projeto 
+## Conheça o projeto :open_book:
 
 <br>
 
@@ -19,15 +19,15 @@
   
   
   
- ## Como vai funcionar?
+ ## Como vai funcionar? :hammer_and_wrench:
   
 <strong>teCuida</strong> é uma API RESTfull feita com a tecnologia Javascript no Node.js e integrada ao MongoDB que atende três clientes: usuáries, pessoas da medicina que buscam informação sobre o tema e especialistas atuantes na área desejam contribuir com seus conhecimentos. Sendo assim, será possível realizar ações como o cadastro, atualização e visualização de médicos que já fazem esse atendimento especializado, considerando informações como preço social, plano de saúde, descrição e gênero. Assim como também será possível, por parte dos médicos atuantes, o cadastro e atualização de guias para realização de um atendimento não violento. 
 
-<strong>teCuida</strong> Por se tratar de um tema que requer cautela e abordagem segura, ações como cadastro, atualização e deleção de informações só podem ser realizadas por usuários já cadastrados no sistema.
+Por se tratar de um tema que requer cautela e abordagem segura, ações como cadastro, atualização e deleção de informações só podem ser realizadas por usuários já cadastrados no sistema.
 
 
 
-## Tecnologias que vamos usar:
+## Tecnologias utilizadas:
 | Ferramenta | Descrição |
 | --- | --- |
 | `javascript` | Linguagem de programação |
@@ -44,33 +44,49 @@
 <br>
 <br>
 
-## 📁 Arquitetura 
+## 📁 Arquitetura MVC
 
 ```
- 📁 FavMovies
+ 📁 teCuida
    |
    |-  📁 src
    |    |
-   |    |- 📁 data
-   |         |- 📄 database.js
-   |
+   |    |- 📁 assets
+   |    |    |- 📄 teCuida.gif
+   |    |  
    |    |- 📁 controllers
-   |         |- 📄 tituloController.js
-   |         |- 📄 estudioController.js
-   |
+   |    |    |- 📄 authController.js
+   |    |    |- 📄 doctorUserController.js
+   |    |    |- 📄 guideController.js
+   |    |    |- 📄 userController.js 
+   |    |
+   |    |- 📁 data  
+   |    |    |- 📄 dbConfig.js
+   |    | 
+   |    |- 📁 helpers
+   |    |    |- 📄 check-token.js
+   |    |    |- 📄 get-user-by-token.js
+   |    |
    |    |- 📁 models
-   |         |- 📄 titulo.js
-   |         |- 📄 estudio.js
-   |
+   |    |    |- 📄 doctorUser.js 
+   |    |    |- 📄 guide.js 
+   |    |    |- 📄 user.js
+   |    | 
    |    |- 📁 routes
-   |         |- 📄 tituloRoutes.js 
-   |         |- 📄 estudioRoutes.js 
-   |
-   |
-   |- 📄 .env
+   |    |    |- 📄 auth.routes.js
+   |    |    |- 📄 doctorUser.routes.js
+   |    |    |- 📄 guide.routes.js
+   |    |    |- 📄 index.js
+   |    |    |- 📄 user.routes.js
+   |    |   
+   |    |- 📄 app.js 
+   |    
    |- 📄 .env.example
    |- 📄 .gitignore
-   |- 📄 package
+   |- 📄 package-lock.json
+   |- 📄 package.json
+   |- 📄 Procfile
+   |- 📄 README.md 
    |- 📄 server.js
 
 ```
@@ -80,16 +96,69 @@
 
      
      
-### Regras de negócio
+## Regras de negócio :handshake:
 
-- [x]  Não deverá ser possível criar estudio com o mesmo nome
-- [x]  Não deverá ser possível criar título com o mesmo nome
-- [x]  Para criar um novo título, deverá vincular no momento da criação a um estudio já existente no sistema
+#### Rota de registro:
+    
+- [x]  Cadastro só pode ser feito se todos os campos obrigatórios forem preenchidos;
+- [x]  Cadastro só pode ser feitos se a senha digitada for a mesma da confirmação senha;
+- [x]  Cadastro não pode ser feito com um e-mail que já esteja no sistema;
+- [x]  Ausência do CRM não pode ser impeditivo na realização de cadastro.
+    
+#### Rota de login:
+    
+- [x]  Acesso só pode ser liberado caso o e-mail e senha coincidam com os já cadastrados.
+    
+#### Rota de usuário:
+    
+- [x]  Atualização só pode ser feita por um usuário já cadastrado;
+- [x]  Atualização de senha só acontece se as senhas coincidirem;
+- [x]  Atualização só pode ser feita pelo próprio usuário.
 
+#### Rota de cadastro de médicos/as:
+    
+- [x]  Cadastro só pode ser feito por um usuário logado no sistema;
+- [x]  Nome, endereço, preço social, plano de saúde, descrição e gênero devem ser campos obrigatórios;
+- [x]  O cadastro só pode ser realizado se todos os campos obrigatórios estiverem preenchidos;
+- [x]  O mesmo médico não pode ser cadastrado duas vezes.
+    
+#### Rota de visualização de médicos/as:    
+- [x]  Deve ser possível retornar apenas médicos que aceitem preço social;
+- [x]  Deve ser possível retornar apenas médicos que aceitem plano de saúde; 
+- [x]  Deve ser possível retornar apenas médicas do gênero feminino; 
+- [x]  Deve ser possível retornar apenas médicos do gênero masculino. 
+
+    
+#### Rota para atualização de médico:
+    
+- [x]  Atualização só pode ser feito por um usuário logado no sistema;
+- [x]  A atualização só pode ser feita se todos os campos obrigatórios estiverem preenchidos.
+- [x]  O mesmo médico não pode ser cadastrado duas vezes.   
+    
+#### Rota para deleletar médico: 
+
+- [x]  Médico só pode ser apagado por um usuário logado no sistema.
+    
+#### Rota de cadastro de guia:
+    
+- [x]  Cadastro só pode ser feito por um usuário logado no sistema;
+- [x]  Nome, endereço, preço social, plano de saúde, descrição e gênero devem ser campos obrigatórios;
+- [x]  O cadastro só pode ser realizado se todos os campos obrigatórios estiverem preenchidos.
+- [x]  O mesmo médico não pode ser cadastrado duas vezes.
+    
+#### Rota para atualização de guia:
+    
+- [x]  Atualização só pode ser feito por um usuário logado no sistema;
+- [x]  A atualização só pode ser feita se todos os campos obrigatórios estiverem preenchidos. 
+    
+#### Rota para deletar guia:
+
+- [x]  Guia só pode ser apagada por um usuário logado no sistema.    
+    
 <br>
 <br>
      
 ## Implementações Futuras
 
      
-## Autora
+## Autora woman_technologist
