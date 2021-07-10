@@ -11,25 +11,27 @@
 
 <br>
 
-<p align="justify"> A sociedade em que vivemos deu muito errado para a grande maioria das pessoas. O falso conservadorismo que nos permeia faz com que assuntos como a vida sexual da mulher não sejam discutidos. O resultado disso: violência. Se entre mulheres cis heterossexuais a experiência ginecológica já é traumática. Quando fazemos o recorte para mulheres lésbicas, bissexuais e pessoas não binárias, uma consulta ao ginecologista é composta por violência, apagamento, desrespeito e a sensação de que ter acesso ao básico, como um tratamento médico humanizado, é algo que jamais será alcançado. Afinal, o problema é bem mais profundo quando paramos para pensar que as faculdades de medicina não formam médicas e médicos para nada que não seja heteronormativo. 
+<p align="justify"> A sociedade capitalista, machista, racista e LGBTQIA+fóbica em que vivemos deu muito errado para a grande maioria das pessoas. O falso conservadorismo que nos permeia faz com que assuntos como a vida sexual da mulher não sejam discutidos. O resultado disso: violência. Se entre mulheres cis heterossexuais a experiência ginecológica já é traumática. Quando fazemos o recorte para mulheres lésbicas, bissexuais e pessoas não binárias, uma consulta ginecológica é composta por violência, apagamento, desrespeito e a sensação de que ter acesso ao básico, como um tratamento médico humanizado, é algo que jamais será alcançado. Afinal, o problema é bem mais profundo quando paramos para pensar que as faculdades de medicina não formam médicas e médicos para nada que não seja heteronormativo. 
   
 <p align="justify"> Como resultado a esses dois problemas existe uma verdadeira fuga desse grupo das consultas ginecológicas. De acordo com a Febrasgo (Federação Brasileira das Associações de Ginecologia e Obstetrícia) 76% das mulheres (independentemente de sua sexualidade) realizam consultas ginecológicas anualmente. Mas quando falamos das mulheres que fazem sexo com mulheres o índice cai para 47%. Uma situação extremamente preocupante porque a prevenção é o melhor caminho para evitar problemas e ter uma boa saúde. 
   
-<p align="justify"> Atualmente o processo de encontrar uma boa ginecologista se dá por meio do boca a boca ou através de indicação em grupos nas redes sociais. Fora o difícil acesso para encontrar médicas/os especialistas para tratar sobre o assunto. Essas dificuldades tornam um processo que deveria ser natural em algo trabalhoso e cansativo.
-<br>
+<p align="justify"> Atualmente, o processo de encontrar ginecologistas que atendam mulheres lésbicas, bissexuais e pessoas não binárias sem discriminação e de maneira humanizada se dá por meio do boca a boca ou através de indicação em grupos nas redes sociais. Fora o difícil acesso para encontrar médicas/os especialistas para tratar sobre o assunto. Essas dificuldades tornam um processo que deveria ser natural em algo trabalhoso e cansativo.
+    
+[Fonte](https://portalarquivos2.saude.gov.br/images/pdf/2015/agosto/31/livreto-atencao-a-saude-de-mulheres-lesbicas-versao-web.pdf)
+    
 <br>    
     
 ## 2. O que propõe o projeto <strong>teCuida</strong>?     
     
-<p align="justify"> Partindo do princípio que estamos no século XXI e que tamanho retrocesso é inaceitável, como forma de mitigar esse problema, a <strong>teCuida</strong> busca criar um ambiente de referência capaz de criar uma base de médicos e médicas que realizam esse atendimento humanizado, assim como uma base para que médicos possam ter acesso a guias com instruções sobre como proceder corretamente em consultas e exames realizados em mulheres lésbicas, bissexuais e pessoas não binárias.
+<p align="justify"> Partindo do princípio que estamos no século XXI e que tamanho retrocesso é inaceitável, como forma de mitigar esse problema, a <strong>teCuida</strong> busca criar um ambiente de referência capaz de criar uma base de médicas e médicos que realizam esse atendimento humanizado, assim como uma base para que essas/es médicas/os possam ter acesso a guias com instruções sobre como proceder corretamente em consultas e exames realizados em mulheres lésbicas, bissexuais e pessoas não binárias.
 <br>
 <br>
   
- ## 3. Como vai funcionar? :hammer_and_wrench:
+ ## 3. Como vai funcionar? 
   
-<strong>teCuida</strong> é uma API RESTfull feita com a tecnologia Javascript no Node.js e integrada ao MongoDB que atende três clientes: usuáries, pessoas da medicina que buscam informação sobre o tema e especialistas atuantes na área desejam contribuir com seus conhecimentos. Sendo assim, será possível realizar ações como o cadastro, atualização e visualização de médicos que já fazem esse atendimento especializado, considerando informações como preço social, plano de saúde, descrição e gênero. Assim como também será possível, por parte dos médicos atuantes, o cadastro e atualização de guias para realização de um atendimento não violento. 
+<strong>teCuida</strong> é uma API RESTfull feita com a tecnologia Javascript no Node.js e integrada ao MongoDB que atende três clientes: usuáries, pessoas da medicina que buscam informação sobre o tema e especialistas atuantes na área desejam contribuir com seus conhecimentos. Sendo assim, será possível realizar ações como o cadastro, atualização e visualização de médicas/os que já fazem esse atendimento especializado, considerando informações como preço social, plano de saúde, descrição  do atendimento e gênero. Assim como também será possível, por parte das/os médicas/os atuantes, o cadastro e atualização de guias para realização de um atendimento não violento,pelo contrário! Que seja humanizado, atendendo as especificidades das mulheres cis e de pessoas não-binárias, independentemente de sua sexualidade. 
 
-Por se tratar de um tema que requer cautela e abordagem segura, ações como cadastro, atualização e deleção de informações só podem ser realizadas por usuários já cadastrados no sistema.
+Por se tratar de um tema que requer cautela e abordagem segura, ações como cadastro, atualização e deleção de informações só podem ser realizadas por usuárias/os  já cadastradas/os no sistema.
 <br>
 <br>
 
@@ -263,7 +265,7 @@ name: {
 <br>
 <br>
     
-## 7. Regras de negócio :handshake:
+## 7. Regras de negócio 
 
 #### Rota de registro:
     
@@ -350,9 +352,9 @@ name: {
 ## 10. Autora :woman_technologist:     
      
   ### Karlla Nascimento
-- [instagram](https://www.instagram.com/karllanascimento/)
-- [linkedin](https://www.linkedin.com/in/karlla-nascimento/)
-- [github](https://github.com/KarllaNascimento)
+- [Instagram](https://www.instagram.com/karllanascimento/)
+- [Linkedin](https://www.linkedin.com/in/karlla-nascimento/)
+- [Github](https://github.com/KarllaNascimento)
     
     
     
