@@ -271,40 +271,39 @@ name: {
     
 - [x]  Cadastro só pode ser feito se todos os campos obrigatórios forem preenchidos;
 - [x]  Cadastro só pode ser feitos se a senha digitada for a mesma da confirmação senha;
-- [x]  Cadastro não pode ser feito com um e-mail que já esteja no sistema;
-- [x]  Ausência do CRM não pode ser impeditivo na realização de cadastro.
+- [x]  Cadastro não pode ser aceito se o e-mail que já estiver no sistema;
+- [x]  Ausência de CRM não pode ser impeditivo para realização de cadastro.
     
 #### Rota de login:
     
-- [x]  Acesso só pode ser liberado caso o e-mail e senha coincidam com os já cadastrados.
+- [x]  Acesso só pode ser liberado caso o e-mail e senha coincidam com os cadastrados anteriormente.
     
 #### Rota de usuário:
     
-- [x]  Atualização só pode ser feita por um usuário já cadastrado;
+- [x]  Atualização só pode ser feita por um usuário logado;
 - [x]  Atualização de senha só acontece se as senhas coincidirem;
 - [x]  Atualização só pode ser feita pelo próprio usuário.
 
-#### Rota de cadastro de médicos/as:
+#### Rota de cadastro de médicas/os:
     
-- [x]  Cadastro só pode ser feito por um usuário logado no sistema;
+- [x]  Cadastro só pode ser feito por um usuário logado;
 - [x]  Nome, endereço, preço social, plano de saúde, descrição e gênero devem ser campos obrigatórios;
 - [x]  O cadastro só pode ser realizado se todos os campos obrigatórios estiverem preenchidos;
-- [x]  O mesmo médico não pode ser cadastrado duas vezes.
+- [x]  Cadastro duplicado não poderá ser aceito. 
     
-#### Rota de visualização de médicos/as:    
-- [x]  Deve ser possível retornar apenas médicos que aceitem preço social;
-- [x]  Deve ser possível retornar apenas médicos que aceitem plano de saúde; 
+#### Rota de visualização de médicas/os:    
+- [x]  Deve ser possível retornar apenas médicas/os que aceitem preço social;
+- [x]  Deve ser possível retornar apenas médicas/os que aceitem plano de saúde; 
 - [x]  Deve ser possível retornar apenas médicas do gênero feminino; 
 - [x]  Deve ser possível retornar apenas médicos do gênero masculino. 
 
     
-#### Rota para atualização de médico:
+#### Rota para atualização de médica/o:
     
-- [x]  Atualização só pode ser feito por um usuário logado no sistema;
-- [x]  A atualização só pode ser feita se todos os campos obrigatórios estiverem preenchidos.
-- [x]  O mesmo médico não pode ser cadastrado duas vezes.   
+- [x]  Atualização só pode ser feito por um usuário logado;
+- [x]  A atualização só pode ser feita se todos os campos obrigatórios estiverem preenchidos.  
     
-#### Rota para deleletar médico: 
+#### Rota para deletar médica/o: 
 
 - [x]  Médico só pode ser apagado por um usuário logado no sistema.
     
