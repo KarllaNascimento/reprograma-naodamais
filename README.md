@@ -21,7 +21,10 @@
   
  ## Como vai funcionar?
   
- <p align="justify"> 
+<strong>teCuida</strong> é uma API RESTfull feita com a tecnologia Javascript no Node.js e integrada ao MongoDB que atende três clientes: usuáries, pessoas da medicina que buscam informação sobre o tema e especialistas atuantes na área desejam contribuir com seus conhecimentos. Sendo assim, será possível realizar ações como o cadastro, atualização e visualização de médicos que já fazem esse atendimento especializado, considerando informações como preço social, plano de saúde, descrição e gênero. Assim como também será possível, por parte dos médicos atuantes, o cadastro e atualização de guias para realização de um atendimento não violento. 
+
+<strong>teCuida</strong> Por se tratar de um tema que requer cautela e abordagem segura, ações como cadastro, atualização e deleção de informações só podem ser realizadas por usuários já cadastrados no sistema.
+
 
 
 ## Tecnologias que vamos usar:
@@ -75,6 +78,8 @@
 <br>
 <br>
 
+     
+     
 ### Regras de negócio
 
 - [x]  Não deverá ser possível criar estudio com o mesmo nome
@@ -83,3 +88,8 @@
 
 <br>
 <br>
+     
+## Implementações Futuras
+
+     
+## Autora
