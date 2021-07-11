@@ -23,7 +23,7 @@
     
 ## 2. O que propõe o projeto <strong>teCuida</strong>?     
     
-<p align="justify"> Partindo do princípio que estamos no século XXI e que tamanho retrocesso é inaceitável, como forma de mitigar esse problema, inicialmente atendento apenas o estado de Pernambuco, a <strong>teCuida</strong> busca ser um ambiente de referência capaz de criar uma base de médicas e médicos que realizam esse atendimento humanizado, assim como uma base para que essas/es médicas/os possam ter acesso a guias com instruções sobre como proceder corretamente em consultas e exames realizados em mulheres lésbicas, bissexuais e pessoas não binárias.
+<p align="justify"> Partindo do princípio que estamos no século XXI e que tamanho retrocesso é inaceitável, como forma de mitigar esse problema, inicialmente atendendo apenas o estado de Pernambuco, a <strong>teCuida</strong> busca ser um ambiente de referência capaz de criar uma base de médicas e médicos que realizam esse atendimento humanizado, assim como uma base para que essas/es médicas/os possam ter acesso a guias com instruções sobre como proceder corretamente em consultas e exames realizados em mulheres lésbicas, bissexuais e pessoas não binárias.
 <br>
 <br>
   
