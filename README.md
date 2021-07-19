@@ -356,6 +356,8 @@ name: {
 - [Instagram](https://www.instagram.com/karllanascimento/)
 - [Linkedin](https://www.linkedin.com/in/karlla-nascimento/)
 - [Github](https://github.com/KarllaNascimento)
+- [Apresentação](https://www.canva.com/design/DAEj1inpg_A/U6vlO0nXIwr2yqIzG1keuA/view?utm_content=DAEj1inpg_A&utm_campaign=designshare&utm_medium=link&utm_source=homepage_design_menu)
+    
     
     
     
